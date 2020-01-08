@@ -126,8 +126,8 @@ class _HomePageState extends State<HomePage> {
                     color: Colors.teal,
                     borderRadius: BorderRadius.circular(10.0),
                     image: DecorationImage(
-                        image: NetworkImage(
-                            "https://source.unsplash.com/1280x720/?technology,computers"),
+                        image:
+                            NetworkImage("https://picsum.photos/1280?image=8"),
                         fit: BoxFit.cover,
                         alignment: Alignment.center,
                         colorFilter: ColorFilter.mode(
