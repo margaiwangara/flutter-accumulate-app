@@ -1,3 +1,4 @@
+import 'package:accumulate/ui/details.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -109,7 +110,10 @@ class _HomePageState extends State<HomePage> {
       "The RFC vote for spread operator support in Array expressions was overwhelmingly in favor of adding this feature to PHP 7.4";
   _itemCard() {
     return InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => ArticleDetails()));
+        },
         child: Material(
             elevation: 5.0,
             borderRadius: BorderRadius.circular(10.0),
