@@ -111,26 +111,46 @@ class _HomePageState extends State<HomePage> {
                                 letterSpacing: 0.9),
                           ),
                           SizedBox(
-                            height: 0.0,
+                            height: 5.0,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: <Widget>[
+                              SizedBox(
+                                  height: 30.0,
+                                  child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: <Widget>[
+                                        Container(
+                                          width: 30.0,
+                                          decoration: BoxDecoration(
+                                              color: Colors.teal,
+                                              shape: BoxShape.circle,
+                                              border: Border.all(
+                                                  color: Colors.grey[400],
+                                                  width: 1.5),
+                                              image: DecorationImage(
+                                                  image: NetworkImage(
+                                                      "https://source.unsplash.com/300x300/?people"),
+                                                  fit: BoxFit.cover,
+                                                  alignment: Alignment.center)),
+                                        ),
+                                        SizedBox(
+                                          width: 5.0,
+                                        ),
+                                        Text('Jane Doe',
+                                            style: TextStyle(
+                                                color: Colors.grey[400],
+                                                fontWeight: FontWeight.bold,
+                                                letterSpacing: 0.9))
+                                      ])),
                               Text(
                                 "2 Days Ago",
                                 style: TextStyle(
                                     color: Colors.grey[400],
                                     fontWeight: FontWeight.bold,
                                     letterSpacing: 0.9),
-                              ),
-                              Container(
-                                width: 35.0,
-                                height: 35.0,
-                                decoration: BoxDecoration(
-                                  color: Colors.teal,
-                                  shape: BoxShape.circle,
-                                ),
                               )
                             ],
                           )
