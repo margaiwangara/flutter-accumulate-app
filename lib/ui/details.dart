@@ -21,28 +21,48 @@ class _ArticleDetailsState extends State<ArticleDetails> {
   }
 
   _topSection() {
-    return Stack(children: <Widget>[
-      Container(
-        height: MediaQuery.of(context).size.height * 0.7,
-        decoration: BoxDecoration(
-            color: Colors.teal[50],
-            borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(25.0),
-                bottomRight: Radius.circular(25.0)),
-            boxShadow: [
-              BoxShadow(
-                  color: Theme.of(context).accentColor.withOpacity(0.6),
-                  offset: new Offset(-0.75, 5.0),
-                  blurRadius: 5.5)
-            ],
-            image: DecorationImage(
-                image: NetworkImage("https://picsum.photos/1280?image=8"),
-                fit: BoxFit.cover,
-                alignment: Alignment.center,
-                repeat: ImageRepeat.noRepeat,
-                colorFilter: ColorFilter.mode(
-                    Colors.black.withOpacity(0.6), BlendMode.darken))),
-      )
-    ]);
+    return Stack(
+      children: <Widget>[
+        Container(
+          height: MediaQuery.of(context).size.height * 0.7,
+          decoration: BoxDecoration(
+              color: Colors.teal[50],
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(25.0),
+                  bottomRight: Radius.circular(25.0)),
+              boxShadow: [
+                BoxShadow(
+                    color: Theme.of(context).accentColor.withOpacity(0.6),
+                    offset: new Offset(-0.75, 5.0),
+                    blurRadius: 5.5)
+              ],
+              image: DecorationImage(
+                  image: NetworkImage("https://picsum.photos/1280?image=8"),
+                  fit: BoxFit.cover,
+                  alignment: Alignment.center,
+                  repeat: ImageRepeat.noRepeat,
+                  colorFilter: ColorFilter.mode(
+                      Colors.black.withOpacity(0.6), BlendMode.darken))),
+        ),
+        Positioned.fill(
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[_topSectionHeader(), _topSectionFooter()],
+        ))
+      ],
+    );
+  }
+
+  _topSectionHeader() {
+    return Container(
+      width: 60.0,
+      height: 60.0,
+      color: Colors.green,
+    );
+  }
+
+  _topSectionFooter() {
+    return Container(width: 60.0, height: 60.0, color: Colors.pink);
   }
 }
