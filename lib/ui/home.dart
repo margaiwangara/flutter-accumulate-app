@@ -93,6 +93,17 @@ class _HomePageState extends State<HomePage> {
                         colorFilter: ColorFilter.mode(
                             Colors.black.withOpacity(0.2), BlendMode.darken))),
               ),
+              Positioned.fill(
+                  child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  Text(
+                    'I am the king of the world',
+                    style: TextStyle(color: Colors.white),
+                  )
+                ],
+              ))
             ])));
   }
 }
