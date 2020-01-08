@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lipsum/lipsum.dart' as Lipsum;
 
 class ArticleDetails extends StatefulWidget {
   @override
@@ -6,6 +7,9 @@ class ArticleDetails extends StatefulWidget {
 }
 
 class _ArticleDetailsState extends State<ArticleDetails> {
+  final String sampleText =
+      Lipsum.createParagraph(numParagraphs: 3, numSentences: 5);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,7 +18,7 @@ class _ArticleDetailsState extends State<ArticleDetails> {
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(color: Theme.of(context).primaryColor),
         child: ListView(
-          children: <Widget>[_topSection()],
+          children: <Widget>[_topSection(), _bottomSection()],
         ),
       ),
     );
@@ -156,5 +160,17 @@ class _ArticleDetailsState extends State<ArticleDetails> {
         )
       ],
     );
+  }
+
+  _bottomSection() {
+    return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 30.0),
+        child: Text(
+          sampleText,
+          style: TextStyle(
+              fontSize: 17.5,
+              color: Colors.white.withOpacity(0.75),
+              height: 1.5),
+        ));
   }
 }
