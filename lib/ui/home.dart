@@ -61,11 +61,20 @@ class _HomePageState extends State<HomePage> {
                     duration: Duration(seconds: 2),
                   ));
                 },
-                child: Icon(
-                  Icons.view_list,
-                  color: Theme.of(context).accentColor,
-                  size: 30.0,
-                ),
+                child: Text(
+                  'View All',
+                  style: TextStyle(
+                      fontSize: 15.0,
+                      fontWeight: FontWeight.normal,
+                      letterSpacing: 0.9,
+                      color: Theme.of(context).accentColor),
+                )
+                // Icon(
+                //   Icons.view_list,
+                //   color: Theme.of(context).accentColor,
+                //   size: 30.0,
+                // )
+                ,
               )
             ],
           ),
