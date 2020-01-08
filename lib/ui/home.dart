@@ -8,55 +8,69 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Container(
-      height: MediaQuery.of(context).size.height,
-      width: MediaQuery.of(context).size.width,
-      child: ListView(
-        children: <Widget>[
-          SizedBox(
-            height: 25.0,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[_pageHeader(), _pageContent()],
-            ),
-          )
-        ],
-      ),
-    ));
-  }
-
-  _pageHeader() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        Text(
-          "Articles",
-          style: TextStyle(
-              fontSize: 30.0,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 0.9,
-              color: Theme.of(context).primaryColor),
-        ),
-        Row(
+    return Scaffold(body: Builder(builder: (BuildContext context) {
+      return Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(color: Theme.of(context).primaryColor),
+        child: ListView(
           children: <Widget>[
-            InkWell(
-              onTap: () {},
-              child: Icon(
-                Icons.view_list,
-                color: Theme.of(context).primaryColor,
-                size: 30.0,
+            SizedBox(
+              height: 25.0,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[_pageHeader(), _pageContent()],
               ),
             )
           ],
         ),
-      ],
-    );
+      );
+    }));
+  }
+
+  _pageHeader() {
+    return Builder(builder: (BuildContext context) {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Text(
+            "Articles",
+            style: TextStyle(
+                fontSize: 30.0,
+                fontWeight: FontWeight.bold,
+                letterSpacing: 0.9,
+                color: Theme.of(context).accentColor),
+          ),
+          Row(
+            children: <Widget>[
+              InkWell(
+                onTap: () {
+                  Scaffold.of(context).showSnackBar(SnackBar(
+                    content: Text(
+                      'Card Tapped',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.grey[400]),
+                    ),
+                    backgroundColor: Theme.of(context).primaryColor,
+                    duration: Duration(seconds: 2),
+                  ));
+                },
+                child: Icon(
+                  Icons.view_list,
+                  color: Theme.of(context).accentColor,
+                  size: 30.0,
+                ),
+              )
+            ],
+          ),
+        ],
+      );
+    });
   }
 
   _pageContent() {
@@ -67,7 +81,26 @@ class _HomePageState extends State<HomePage> {
         SizedBox(
           height: 15.0,
         ),
-        _itemCard()
+        _itemCard(),
+        SizedBox(
+          height: 10.0,
+        ),
+        _itemCard(),
+        SizedBox(
+          height: 10.0,
+        ),
+        _itemCard(),
+        SizedBox(
+          height: 10.0,
+        ),
+        _itemCard(),
+        SizedBox(
+          height: 10.0,
+        ),
+        _itemCard(),
+        SizedBox(
+          height: 10.0,
+        )
       ],
     );
   }
@@ -80,6 +113,7 @@ class _HomePageState extends State<HomePage> {
         child: Material(
             elevation: 5.0,
             borderRadius: BorderRadius.circular(10.0),
+            shadowColor: Colors.grey[400],
             child: Stack(children: <Widget>[
               Container(
                 width: MediaQuery.of(context).size.width,
@@ -93,7 +127,7 @@ class _HomePageState extends State<HomePage> {
                         fit: BoxFit.cover,
                         alignment: Alignment.center,
                         colorFilter: ColorFilter.mode(
-                            Colors.black.withOpacity(0.35), BlendMode.darken))),
+                            Colors.black.withOpacity(0.5), BlendMode.darken))),
               ),
               Positioned.fill(
                   child: Padding(
@@ -105,7 +139,7 @@ class _HomePageState extends State<HomePage> {
                           Text(
                             'Spread Operator for Arrays Coming to PHP 7.4',
                             style: TextStyle(
-                                color: Colors.white,
+                                color: Colors.white.withOpacity(0.75),
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20.0,
                                 letterSpacing: 0.9),
