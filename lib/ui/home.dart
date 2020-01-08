@@ -80,12 +80,18 @@ class _HomePageState extends State<HomePage> {
             borderRadius: BorderRadius.circular(10.0),
             child: Stack(children: <Widget>[
               Container(
-                width: MediaQuery.of(context).size.width * 0.9,
+                width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height * 0.3,
                 decoration: BoxDecoration(
-                  color: Colors.teal,
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
+                    color: Colors.teal,
+                    borderRadius: BorderRadius.circular(10.0),
+                    image: DecorationImage(
+                        image: NetworkImage(
+                            "https://source.unsplash.com/1280x720/?technology,computers"),
+                        fit: BoxFit.cover,
+                        alignment: Alignment.center,
+                        colorFilter: ColorFilter.mode(
+                            Colors.black.withOpacity(0.2), BlendMode.darken))),
               ),
             ])));
   }
