@@ -67,8 +67,26 @@ class _HomePageState extends State<HomePage> {
         SizedBox(
           height: 15.0,
         ),
-        Text('This is the content')
+        _itemCard()
       ],
     );
+  }
+
+  _itemCard() {
+    return InkWell(
+        onTap: () {},
+        child: Material(
+            elevation: 5.0,
+            borderRadius: BorderRadius.circular(10.0),
+            child: Stack(children: <Widget>[
+              Container(
+                width: MediaQuery.of(context).size.width * 0.9,
+                height: MediaQuery.of(context).size.height * 0.3,
+                decoration: BoxDecoration(
+                  color: Colors.teal,
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+              ),
+            ])));
   }
 }
