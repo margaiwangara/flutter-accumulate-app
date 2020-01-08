@@ -72,6 +72,8 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  final String someText =
+      "The RFC vote for spread operator support in Array expressions was overwhelmingly in favor of adding this feature to PHP 7.4";
   _itemCard() {
     return InkWell(
         onTap: () {},
@@ -91,19 +93,49 @@ class _HomePageState extends State<HomePage> {
                         fit: BoxFit.cover,
                         alignment: Alignment.center,
                         colorFilter: ColorFilter.mode(
-                            Colors.black.withOpacity(0.2), BlendMode.darken))),
+                            Colors.black.withOpacity(0.35), BlendMode.darken))),
               ),
               Positioned.fill(
-                  child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[
-                  Text(
-                    'I am the king of the world',
-                    style: TextStyle(color: Colors.white),
-                  )
-                ],
-              ))
+                  child: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          Text(
+                            'Spread Operator for Arrays Coming to PHP 7.4',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20.0,
+                                letterSpacing: 0.9),
+                          ),
+                          SizedBox(
+                            height: 0.0,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Text(
+                                "2 Days Ago",
+                                style: TextStyle(
+                                    color: Colors.grey[400],
+                                    fontWeight: FontWeight.bold,
+                                    letterSpacing: 0.9),
+                              ),
+                              Container(
+                                width: 35.0,
+                                height: 35.0,
+                                decoration: BoxDecoration(
+                                  color: Colors.teal,
+                                  shape: BoxShape.circle,
+                                ),
+                              )
+                            ],
+                          )
+                        ],
+                      )))
             ])));
   }
 }
