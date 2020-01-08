@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
-              children: <Widget>[_pageHeader()],
+              children: <Widget>[_pageHeader(), _pageContent()],
             ),
           )
         ],
@@ -54,7 +54,20 @@ class _HomePageState extends State<HomePage> {
               ),
             )
           ],
-        )
+        ),
+      ],
+    );
+  }
+
+  _pageContent() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        SizedBox(
+          height: 15.0,
+        ),
+        Text('This is the content')
       ],
     );
   }
