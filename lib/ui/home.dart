@@ -1,5 +1,6 @@
 import 'package:accumulate/ui/details.dart';
 import 'package:flutter/material.dart';
+import 'package:accumulate/model/article.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -7,6 +8,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  Future<ArticleResponse> article;
+
+  @override
+  void initState() {
+    super.initState();
+    article = fetchArticle();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(body: Builder(builder: (BuildContext context) {
