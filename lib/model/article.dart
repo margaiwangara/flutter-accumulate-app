@@ -29,6 +29,7 @@ class Article {
   final String datePublished;
   final String posterImage;
   final String articleLink;
+
   // final List<Author> authors;
   // final Language language;
 
@@ -73,8 +74,8 @@ class Language {
 
 // fetch articles
 Future<ResponseHandler> fetchArticle() async {
-  final response =
-      await http.get('https://devnewsbucket.herokuapp.com/api/articles');
+  final response = await http.get(
+      'https://devnewsbucket.herokuapp.com/api/articles?sort=-datePublished');
 
   if (response.statusCode == 200) {
     // if server response was successful parse json

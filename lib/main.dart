@@ -45,16 +45,33 @@ class _ArticleAppState extends State<ArticleApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+          color: Colors.teal,
+        ),
         child: FutureBuilder(
           future: article,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              for (var a in snapshot.data.data) {
-                print(a.title);
-              }
-              // print(snapshot.data.data[1].title);
-              return Text('This is my text');
+              var articleList = snapshot.data.data;
+              return ListView.builder(
+                itemCount: articleList.length,
+                itemBuilder: (context, index) {
+                  return Card(
+                    child: ListTile(
+                      leading: Image.network(
+                        articleList[index].posterImage,
+                        fit: BoxFit.contain,
+                        alignment: Alignment.center,
+                      ),
+                      title: Text(articleList[index].title),
+                      subtitle: Text(articleList[index].summary),
+                    ),
+                  );
+                },
+              );
             } else {
               return Text("${snapshot.error}");
             }
