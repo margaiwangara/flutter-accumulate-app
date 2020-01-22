@@ -14,7 +14,6 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     article = fetchArticle();
-    
   }
 
   @override
@@ -91,6 +90,19 @@ class _HomePageState extends State<HomePage> {
         ],
       );
     });
+  }
+
+  _pPageContent(String title, String image, String datePublished) {
+    return FutureBuilder(
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          // return some data here
+          return Text('There is some data here');
+        } else {
+          return Text("${snapshot.error}");
+        }
+      },
+    );
   }
 
   _pageContent() {
