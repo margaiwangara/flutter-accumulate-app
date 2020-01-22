@@ -59,6 +59,7 @@ class _ArticleAppState extends State<ArticleApp> {
               return ListView.builder(
                 itemCount: articleList.length,
                 itemBuilder: (context, index) {
+                  print(articleList[index].authors[0].name);
                   return Card(
                     child: ListTile(
                       leading: Image.network(
