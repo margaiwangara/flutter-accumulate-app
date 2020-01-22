@@ -8,12 +8,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  Future<ArticleResponse> article;
+  Future<ResponseHandler> article;
 
   @override
   void initState() {
     super.initState();
     article = fetchArticle();
+    
   }
 
   @override

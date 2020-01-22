@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:wakelock/wakelock.dart';
-import 'package:accumulate/ui/home.dart';
-import 'dart:developer';
+// import 'package:accumulate/ui/home.dart';
+// import 'dart:developer';
 
 // sample code
 import 'package:accumulate/model/article.dart';
@@ -33,28 +33,33 @@ class ArticleApp extends StatefulWidget {
 }
 
 class _ArticleAppState extends State<ArticleApp> {
-  Future<ArticleResponse> article;
+  Future<ResponseHandler> article;
 
   @override
   void initState() {
     super.initState();
     article = fetchArticle();
+    print(article);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: FutureBuilder<ArticleResponse>(
-            future: article,
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                log("Count: ${snapshot.data.data}");
-                return Text("${snapshot.data.data}");
-              } else {
-                return Text("${snapshot.error}");
+        child: FutureBuilder(
+          future: article,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              for (var a in snapshot.data.data) {
+                print(a.title);
               }
-            }),
+              // print(snapshot.data.data[1].title);
+              return Text('This is my text');
+            } else {
+              return Text("${snapshot.error}");
+            }
+          },
+        ),
       ),
     );
   }
