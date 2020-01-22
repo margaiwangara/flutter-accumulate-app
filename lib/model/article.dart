@@ -30,7 +30,7 @@ class Article {
   final String posterImage;
   final String articleLink;
 
-  // final List<Author> authors;
+  final List<Author> authors;
   // final Language language;
 
   Article({
@@ -41,11 +41,15 @@ class Article {
     @required this.articleLink,
     @required this.datePublished,
     @required this.posterImage,
-    // @required this.authors,
+    @required this.authors,
     // this.language,
   });
 
   factory Article.fromJSON(Map<String, dynamic> json) {
+    var list = json['authors'] as List;
+    print(list.runtimeType);
+
+    List<Author> authorsList = list.map((i) => Author.fromJSON(i)).toList();
     return Article(
         articleId: json['_id'],
         title: json['title'],
@@ -53,7 +57,8 @@ class Article {
         content: json['content'],
         articleLink: json['link'],
         posterImage: json['image'],
-        datePublished: json['datePublished']);
+        datePublished: json['datePublished'],
+        authors: authorsList);
   }
 }
 
@@ -63,6 +68,11 @@ class Author {
   final String gravatar;
 
   Author({@required this.authorId, @required this.name, this.gravatar});
+
+  factory Author.fromJSON(Map<String, dynamic> json) {
+    return Author(
+        authorId: json['_id'], name: json['name'], gravatar: json['gravatar']);
+  }
 }
 
 class Language {
