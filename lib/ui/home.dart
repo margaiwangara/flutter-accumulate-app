@@ -93,34 +93,15 @@ class _HomePageState extends State<HomePage> {
   }
 
   _pageContent() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: <Widget>[
-        SizedBox(
-          height: 15.0,
-        ),
-        _itemCard(),
-        SizedBox(
-          height: 10.0,
-        ),
-        _itemCard(),
-        SizedBox(
-          height: 10.0,
-        ),
-        _itemCard(),
-        SizedBox(
-          height: 10.0,
-        ),
-        _itemCard(),
-        SizedBox(
-          height: 10.0,
-        ),
-        _itemCard(),
-        SizedBox(
-          height: 10.0,
-        )
-      ],
+    return FutureBuilder(
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          print(snapshot.data.data);
+          return Text('I have some data');
+        } else if (snapshot.hasError) {
+          return Text("${snapshot.error}");
+        }
+      },
     );
   }
 
