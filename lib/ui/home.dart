@@ -94,9 +94,10 @@ class _HomePageState extends State<HomePage> {
 
   _pageContent() {
     return FutureBuilder(
+      future: article,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          print(snapshot.data.data);
+          print(snapshot.data.data[0].title);
           return Text('I have some data');
         } else if (snapshot.hasError) {
           return Text("${snapshot.error}");

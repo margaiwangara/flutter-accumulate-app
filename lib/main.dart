@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:wakelock/wakelock.dart';
-// import 'package:accumulate/ui/home.dart';
+import 'package:accumulate/ui/home.dart';
 // import 'dart:developer';
 
 // sample code
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "Accumulate",
       theme: appTheme,
-      home: ArticleApp(),
+      home: HomePage(),
     );
   }
 }
