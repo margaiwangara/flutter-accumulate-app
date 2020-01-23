@@ -111,16 +111,17 @@ class _HomePageState extends State<HomePage> {
               child: ListView.builder(
                 itemCount: list.length,
                 itemBuilder: (context, index) {
-                  print(formatDate(list[index].datePublished));
                   return Column(children: <Widget>[
                     SizedBox(
                       height: 5.0,
                     ),
                     _itemCard(
-                        list[index].title,
-                        list[index].posterImage,
-                        list[index].authors[0].name,
-                        list[index].authors[0].gravatar),
+                      list[index].title,
+                      list[index].posterImage,
+                      list[index].authors[0].name,
+                      list[index].authors[0].gravatar,
+                      formatDate(list[index].datePublished),
+                    ),
                     SizedBox(
                       height: 5.0,
                     )
@@ -138,9 +139,8 @@ class _HomePageState extends State<HomePage> {
 
   final String someText =
       "The RFC vote for spread operator support in Array expressions was overwhelmingly in favor of adding this feature to PHP 7.4";
-  _itemCard(
-      String title, String imagePath, String authorName, String authorGravatar,
-      {String datePublished = ""}) {
+  _itemCard(String title, String imagePath, String authorName,
+      String authorGravatar, String datePublished) {
     return InkWell(
         onTap: () {
           Navigator.push(context,
@@ -215,7 +215,7 @@ class _HomePageState extends State<HomePage> {
                                                 letterSpacing: 0.9))
                                       ])),
                               Text(
-                                "2 Days Ago",
+                                datePublished,
                                 style: TextStyle(
                                     color: Colors.grey[400],
                                     fontWeight: FontWeight.bold,
