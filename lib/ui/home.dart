@@ -34,7 +34,13 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
-                children: <Widget>[_pageHeader(), _pageContent()],
+                children: <Widget>[
+                  _pageHeader(),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  _pageContent()
+                ],
               ),
             )
           ],
@@ -49,7 +55,7 @@ class _HomePageState extends State<HomePage> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Text(
-            "Articles",
+            "Recent",
             style: TextStyle(
                 fontSize: 30.0,
                 fontWeight: FontWeight.bold,
@@ -97,18 +103,37 @@ class _HomePageState extends State<HomePage> {
       future: article,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          print(snapshot.data.data[0].title);
-          return Text('I have some data');
+          var list = snapshot.data.data;
+
+          return Container(
+              height: MediaQuery.of(context).size.height,
+              child: ListView.builder(
+                itemCount: list.length,
+                itemBuilder: (context, index) {
+                  print(list[index].title);
+                  return Column(children: <Widget>[
+                    SizedBox(
+                      height: 5.0,
+                    ),
+                    _itemCard(list[index].title, list[index].posterImage),
+                    SizedBox(
+                      height: 5.0,
+                    )
+                  ]);
+                },
+              ));
         } else if (snapshot.hasError) {
           return Text("${snapshot.error}");
         }
+
+        return CircularProgressIndicator();
       },
     );
   }
 
   final String someText =
       "The RFC vote for spread operator support in Array expressions was overwhelmingly in favor of adding this feature to PHP 7.4";
-  _itemCard() {
+  _itemCard(String title, String imagePath) {
     return InkWell(
         onTap: () {
           Navigator.push(context,
@@ -126,8 +151,7 @@ class _HomePageState extends State<HomePage> {
                     color: Colors.teal,
                     borderRadius: BorderRadius.circular(10.0),
                     image: DecorationImage(
-                        image:
-                            NetworkImage("https://picsum.photos/1280?image=8"),
+                        image: NetworkImage(imagePath),
                         fit: BoxFit.cover,
                         alignment: Alignment.center,
                         colorFilter: ColorFilter.mode(
@@ -141,7 +165,7 @@ class _HomePageState extends State<HomePage> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: <Widget>[
                           Text(
-                            'Spread Operator for Arrays Coming to PHP 7.4',
+                            title,
                             style: TextStyle(
                                 color: Colors.white.withOpacity(0.75),
                                 fontWeight: FontWeight.bold,
