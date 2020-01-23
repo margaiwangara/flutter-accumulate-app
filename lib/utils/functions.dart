@@ -1,4 +1,7 @@
 String formatDate(String dateInput) {
+  // return null if dateinput is empty
+  if (dateInput.isEmpty) return null;
+
   var today = new DateTime.now();
   var parsedDate = DateTime.parse(dateInput);
 
