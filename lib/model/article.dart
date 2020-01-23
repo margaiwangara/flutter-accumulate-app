@@ -49,7 +49,7 @@ class Article {
     var list = json['authors'] as List;
     print(list.runtimeType);
 
-    List<Author> authorsList = list.map((i) => Author.fromJSON(i)).toList();
+    List<Author> authorList = list.map((i) => Author.fromJSON(i)).toList();
     return Article(
         articleId: json['_id'],
         title: json['title'],
@@ -58,7 +58,7 @@ class Article {
         articleLink: json['link'],
         posterImage: json['image'],
         datePublished: json['datePublished'],
-        authors: authorsList);
+        authors: authorList);
   }
 }
 
