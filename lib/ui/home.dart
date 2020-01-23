@@ -110,6 +110,9 @@ class _HomePageState extends State<HomePage> {
               child: ListView.builder(
                 itemCount: list.length,
                 itemBuilder: (context, index) {
+                  var today = new DateTime.now();
+                  var sevenDays = DateTime.parse(list[index].datePublished);
+                  print(sevenDays.difference(today).inDays);
                   return Column(children: <Widget>[
                     SizedBox(
                       height: 5.0,
