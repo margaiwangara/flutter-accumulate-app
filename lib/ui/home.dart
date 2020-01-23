@@ -1,6 +1,7 @@
 import 'package:accumulate/ui/details.dart';
 import 'package:flutter/material.dart';
 import 'package:accumulate/model/article.dart';
+import 'package:accumulate/utils/functions.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -110,9 +111,7 @@ class _HomePageState extends State<HomePage> {
               child: ListView.builder(
                 itemCount: list.length,
                 itemBuilder: (context, index) {
-                  var today = new DateTime.now();
-                  var sevenDays = DateTime.parse(list[index].datePublished);
-                  print(sevenDays.difference(today).inDays);
+                  print(formatDate(list[index].datePublished));
                   return Column(children: <Widget>[
                     SizedBox(
                       height: 5.0,
