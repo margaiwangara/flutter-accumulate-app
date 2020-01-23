@@ -110,12 +110,15 @@ class _HomePageState extends State<HomePage> {
               child: ListView.builder(
                 itemCount: list.length,
                 itemBuilder: (context, index) {
-                  print(list[index].title);
                   return Column(children: <Widget>[
                     SizedBox(
                       height: 5.0,
                     ),
-                    _itemCard(list[index].title, list[index].posterImage),
+                    _itemCard(
+                        list[index].title,
+                        list[index].posterImage,
+                        list[index].authors[0].name,
+                        list[index].authors[0].gravatar),
                     SizedBox(
                       height: 5.0,
                     )
@@ -133,7 +136,9 @@ class _HomePageState extends State<HomePage> {
 
   final String someText =
       "The RFC vote for spread operator support in Array expressions was overwhelmingly in favor of adding this feature to PHP 7.4";
-  _itemCard(String title, String imagePath) {
+  _itemCard(
+      String title, String imagePath, String authorName, String authorGravatar,
+      {String datePublished = ""}) {
     return InkWell(
         onTap: () {
           Navigator.push(context,
@@ -194,14 +199,14 @@ class _HomePageState extends State<HomePage> {
                                                   width: 1.5),
                                               image: DecorationImage(
                                                   image: NetworkImage(
-                                                      "https://source.unsplash.com/300x300/?people"),
+                                                      authorGravatar),
                                                   fit: BoxFit.cover,
                                                   alignment: Alignment.center)),
                                         ),
                                         SizedBox(
                                           width: 5.0,
                                         ),
-                                        Text('Jane Doe',
+                                        Text(authorName,
                                             style: TextStyle(
                                                 color: Colors.grey[400],
                                                 fontWeight: FontWeight.bold,
