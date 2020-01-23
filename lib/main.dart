@@ -38,7 +38,7 @@ class _ArticleAppState extends State<ArticleApp> {
   @override
   void initState() {
     super.initState();
-    article = fetchArticle();
+    article = fetchArticles("sort=-datePublished");
     print(article);
   }
 

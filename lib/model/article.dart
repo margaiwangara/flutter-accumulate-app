@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'dart:async';
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -82,15 +81,26 @@ class Language {
   Language({@required this.name, this.framework});
 }
 
+final String baseURI = "https://devnewsbucket.margaiwangara.me/api";
+
 // fetch articles
-Future<ResponseHandler> fetchArticle() async {
-  final response = await http.get(
-      'https://devnewsbucket.herokuapp.com/api/articles?sort=-datePublished');
+Future<ResponseHandler> fetchArticles(String urlOptions) async {
+  final response = await http.get("$baseURI/articles?$urlOptions");
 
   if (response.statusCode == 200) {
     // if server response was successful parse json
     return ResponseHandler.fromJSON(json.decode(response.body));
   } else {
-    throw Exception('Failed to load articles');
+    throw Exception("Failed to load articles");
+  }
+}
+
+Future<Article> fetchArticle(String articleLink) async {
+  final response = await http.get("$baseURI/articles/$articleLink");
+
+  if (response.statusCode == 200) {
+    return Article.fromJSON(json.decode(response.body));
+  } else {
+    throw Exception("Article not found");
   }
 }
