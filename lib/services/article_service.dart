@@ -23,8 +23,8 @@ class ResponseHandler {
 
 Future<http.Response> _loadResponse(uri) async => await http.get(uri);
 
-Future<ResponseHandler> fetchArticles() async {
-  final String articlesURI = "$baseURI/articles?sort=-datePublished";
+Future<ResponseHandler> fetchArticles(String params) async {
+  final String articlesURI = "$baseURI/articles?$params";
   final response = await _loadResponse(articlesURI);
 
   if (response.statusCode == 200) {
