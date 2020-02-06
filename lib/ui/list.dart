@@ -132,7 +132,17 @@ class _ArticleListState extends State<ArticleList> {
                       style: TextStyle(
                         fontSize: 12.5,
                         fontWeight: FontWeight.normal,
-                        color: Colors.grey,
+                        color: Colors.black54,
+                      ),
+                    ),
+                    CircleAvatar(
+                      backgroundColor: Theme.of(context).primaryColor,
+                      child: Text(
+                        'PW',
+                        style: TextStyle(
+                          color: Theme.of(context).accentColor,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     )
                   ],
