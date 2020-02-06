@@ -2,6 +2,7 @@ import 'package:accumulate/ui/details.dart';
 import 'package:flutter/material.dart';
 import 'package:accumulate/model/article.dart';
 import 'package:accumulate/utils/functions.dart';
+import 'package:accumulate/ui/list.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -60,29 +61,22 @@ class _HomePageState extends State<HomePage> {
             style: TextStyle(
                 fontSize: 30.0,
                 fontWeight: FontWeight.bold,
-                letterSpacing: 0.9,
+                letterSpacing: 1.5,
                 color: Theme.of(context).accentColor),
           ),
           Row(
             children: <Widget>[
               InkWell(
                 onTap: () {
-                  Scaffold.of(context).showSnackBar(SnackBar(
-                    content: Text(
-                      'Card Tapped',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.grey[400]),
-                    ),
-                    backgroundColor: Theme.of(context).primaryColor,
-                    duration: Duration(seconds: 2),
-                  ));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ArticleList()));
                 },
                 child: Text(
                   'View All',
                   style: TextStyle(
                       fontSize: 15.0,
                       fontWeight: FontWeight.normal,
-                      letterSpacing: 0.9,
+                      letterSpacing: 1.25,
                       color: Theme.of(context).accentColor),
                 )
                 // Icon(
@@ -132,7 +126,7 @@ class _HomePageState extends State<HomePage> {
           return Text("${snapshot.error}");
         }
 
-        return CircularProgressIndicator();
+        return Center(child: CircularProgressIndicator());
       },
     );
   }
