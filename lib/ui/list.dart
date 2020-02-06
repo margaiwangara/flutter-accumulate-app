@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lipsum/lipsum.dart' as Lipsum;
 
 class ArticleList extends StatefulWidget {
   @override
@@ -70,6 +71,8 @@ class _ArticleListState extends State<ArticleList> {
   }
 
   _pageBody() {
+    final String sampleHeading = Lipsum.createWord(numWords: 3);
+    final String sampleSummary = Lipsum.createParagraph(numSentences: 3);
     return InkWell(
       onTap: () {},
       child: Container(
@@ -100,6 +103,29 @@ class _ArticleListState extends State<ArticleList> {
                     ),
                   ),
                 ),
+                SizedBox(
+                  width: 5.0,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      sampleHeading,
+                      overflow: TextOverflow.ellipsis,
+                      softWrap: true,
+                      maxLines: 2,
+                      style: TextStyle(
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                        letterSpacing: 0.9,
+                      ),
+                    ),
+                    Text('Text Bottom'),
+                  ],
+                )
               ],
             )),
       ),

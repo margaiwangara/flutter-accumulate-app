@@ -168,10 +168,11 @@ class _HomePageState extends State<HomePage> {
                           Text(
                             title,
                             style: TextStyle(
-                                color: Colors.white.withOpacity(0.75),
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20.0,
-                                letterSpacing: 0.9),
+                              color: Colors.white.withOpacity(0.75),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20.0,
+                              letterSpacing: 0.9,
+                            ),
                           ),
                           SizedBox(
                             height: 5.0,
