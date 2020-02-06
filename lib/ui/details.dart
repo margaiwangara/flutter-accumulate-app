@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lipsum/lipsum.dart' as Lipsum;
 import 'package:accumulate/model/article.dart';
+import 'package:accumulate/utils/functions.dart';
 
 class ArticleDetails extends StatefulWidget {
   final Article article;
@@ -24,7 +25,10 @@ class _ArticleDetailsState extends State<ArticleDetails> {
         decoration: BoxDecoration(color: Theme.of(context).primaryColor),
         child: ListView(
           padding: const EdgeInsets.all(0.0),
-          children: <Widget>[_topSection(widget.article), _bottomSection()],
+          children: <Widget>[
+            _topSection(widget.article),
+            _bottomSection(widget.article.content),
+          ],
         ),
       ),
     );
@@ -161,7 +165,7 @@ class _ArticleDetailsState extends State<ArticleDetails> {
                           letterSpacing: 0.9))
                 ])),
             Text(
-              "2 Days Ago",
+              formatDate(article.datePublished),
               style: TextStyle(
                   color: Colors.grey[400],
                   fontWeight: FontWeight.bold,
@@ -173,11 +177,11 @@ class _ArticleDetailsState extends State<ArticleDetails> {
     );
   }
 
-  _bottomSection() {
+  _bottomSection(String content) {
     return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 30.0),
         child: Text(
-          sampleText,
+          content,
           style: TextStyle(
               fontSize: 17.5,
               color: Colors.white.withOpacity(0.75),
