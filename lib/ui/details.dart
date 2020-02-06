@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:lipsum/lipsum.dart' as Lipsum;
+import 'package:accumulate/model/article.dart';
 
 class ArticleDetails extends StatefulWidget {
-  final String articleLink;
+  final Article article;
 
-  ArticleDetails({@required this.articleLink});
+  ArticleDetails({@required this.article});
   @override
   _ArticleDetailsState createState() => _ArticleDetailsState();
 }
@@ -15,7 +16,7 @@ class _ArticleDetailsState extends State<ArticleDetails> {
 
   @override
   Widget build(BuildContext context) {
-    print(widget.articleLink);
+    print(widget.article);
     return Scaffold(
       body: Container(
         height: MediaQuery.of(context).size.height,
@@ -23,13 +24,13 @@ class _ArticleDetailsState extends State<ArticleDetails> {
         decoration: BoxDecoration(color: Theme.of(context).primaryColor),
         child: ListView(
           padding: const EdgeInsets.all(0.0),
-          children: <Widget>[_topSection(), _bottomSection()],
+          children: <Widget>[_topSection(widget.article), _bottomSection()],
         ),
       ),
     );
   }
 
-  _topSection() {
+  _topSection(var article) {
     return Stack(
       children: <Widget>[
         Container(
@@ -46,7 +47,7 @@ class _ArticleDetailsState extends State<ArticleDetails> {
                     blurRadius: 5.5)
               ],
               image: DecorationImage(
-                  image: NetworkImage("https://picsum.photos/1280?image=8"),
+                  image: NetworkImage(article.posterImage),
                   fit: BoxFit.cover,
                   alignment: Alignment.center,
                   repeat: ImageRepeat.noRepeat,
@@ -59,7 +60,10 @@ class _ArticleDetailsState extends State<ArticleDetails> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[_topSectionHeader(), _topSectionFooter()],
+                  children: <Widget>[
+                    _topSectionHeader(),
+                    _topSectionFooter(article)
+                  ],
                 )))
       ],
     );
@@ -97,7 +101,7 @@ class _ArticleDetailsState extends State<ArticleDetails> {
     );
   }
 
-  _topSectionFooter() {
+  _topSectionFooter(var article) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -119,7 +123,7 @@ class _ArticleDetailsState extends State<ArticleDetails> {
           height: 5.0,
         ),
         Text(
-          'Spread Operator for Arrays Coming to PHP 7.4',
+          article.title,
           style: TextStyle(
               fontSize: 20.0,
               letterSpacing: 0.9,
@@ -143,15 +147,14 @@ class _ArticleDetailsState extends State<ArticleDetails> {
                         shape: BoxShape.circle,
                         border: Border.all(color: Colors.grey[400], width: 1.5),
                         image: DecorationImage(
-                            image: NetworkImage(
-                                "https://source.unsplash.com/300x300/?people"),
+                            image: NetworkImage(article.authors[0].gravatar),
                             fit: BoxFit.cover,
                             alignment: Alignment.center)),
                   ),
                   SizedBox(
                     width: 5.0,
                   ),
-                  Text('Jane Doe',
+                  Text(article.authors[0].name,
                       style: TextStyle(
                           color: Colors.grey[400],
                           fontWeight: FontWeight.bold,

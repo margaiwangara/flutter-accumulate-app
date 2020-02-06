@@ -110,12 +110,7 @@ class _HomePageState extends State<HomePage> {
                       height: 5.0,
                     ),
                     _itemCard(
-                      list[index].title,
-                      list[index].posterImage,
-                      list[index].authors[0].name,
-                      list[index].authors[0].gravatar,
-                      formatDate(list[index].datePublished),
-                      list[index].articleLink,
+                      list[index],
                     ),
                     SizedBox(
                       height: 5.0,
@@ -138,15 +133,14 @@ class _HomePageState extends State<HomePage> {
 
   final String someText =
       "The RFC vote for spread operator support in Array expressions was overwhelmingly in favor of adding this feature to PHP 7.4";
-  _itemCard(String title, String imagePath, String authorName,
-      String authorGravatar, String datePublished, String articleLink) {
+  _itemCard(var article) {
     return InkWell(
         onTap: () {
           Navigator.push(
               context,
               MaterialPageRoute(
                   builder: (context) => ArticleDetails(
-                        articleLink: articleLink,
+                        article: article,
                       )));
         },
         child: Material(
@@ -161,7 +155,7 @@ class _HomePageState extends State<HomePage> {
                     color: Colors.teal,
                     borderRadius: BorderRadius.circular(10.0),
                     image: DecorationImage(
-                        image: NetworkImage(imagePath),
+                        image: NetworkImage(article.posterImage),
                         fit: BoxFit.cover,
                         alignment: Alignment.center,
                         colorFilter: ColorFilter.mode(
@@ -175,7 +169,7 @@ class _HomePageState extends State<HomePage> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: <Widget>[
                           Text(
-                            title,
+                            article.title,
                             style: TextStyle(
                               color: Colors.white.withOpacity(0.75),
                               fontWeight: FontWeight.bold,
@@ -205,21 +199,22 @@ class _HomePageState extends State<HomePage> {
                                                   width: 1.5),
                                               image: DecorationImage(
                                                   image: NetworkImage(
-                                                      authorGravatar),
+                                                    article.authors[0].gravatar,
+                                                  ),
                                                   fit: BoxFit.cover,
                                                   alignment: Alignment.center)),
                                         ),
                                         SizedBox(
                                           width: 5.0,
                                         ),
-                                        Text(authorName,
+                                        Text(article.authors[0].name,
                                             style: TextStyle(
                                                 color: Colors.grey[400],
                                                 fontWeight: FontWeight.bold,
                                                 letterSpacing: 0.9))
                                       ])),
                               Text(
-                                datePublished,
+                                formatDate(article.datePublished),
                                 style: TextStyle(
                                     color: Colors.grey[400],
                                     fontWeight: FontWeight.bold,
