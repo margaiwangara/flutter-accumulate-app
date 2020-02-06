@@ -142,8 +142,12 @@ class _HomePageState extends State<HomePage> {
       String authorGravatar, String datePublished, String articleLink) {
     return InkWell(
         onTap: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => ArticleDetails()));
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => ArticleDetails(
+                        articleLink: articleLink,
+                      )));
         },
         child: Material(
             elevation: 5.0,

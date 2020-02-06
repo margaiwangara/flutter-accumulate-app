@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:lipsum/lipsum.dart' as Lipsum;
 
 class ArticleDetails extends StatefulWidget {
+  final String articleLink;
+
+  ArticleDetails({@required this.articleLink});
   @override
   _ArticleDetailsState createState() => _ArticleDetailsState();
 }
@@ -12,6 +15,7 @@ class _ArticleDetailsState extends State<ArticleDetails> {
 
   @override
   Widget build(BuildContext context) {
+    print(widget.articleLink);
     return Scaffold(
       body: Container(
         height: MediaQuery.of(context).size.height,
