@@ -115,6 +115,7 @@ class _HomePageState extends State<HomePage> {
                       list[index].authors[0].name,
                       list[index].authors[0].gravatar,
                       formatDate(list[index].datePublished),
+                      list[index].articleLink,
                     ),
                     SizedBox(
                       height: 5.0,
@@ -126,7 +127,11 @@ class _HomePageState extends State<HomePage> {
           return Text("${snapshot.error}");
         }
 
-        return Center(child: CircularProgressIndicator());
+        return Container(
+          child: Center(
+            child: CircularProgressIndicator(),
+          ),
+        );
       },
     );
   }
@@ -134,7 +139,7 @@ class _HomePageState extends State<HomePage> {
   final String someText =
       "The RFC vote for spread operator support in Array expressions was overwhelmingly in favor of adding this feature to PHP 7.4";
   _itemCard(String title, String imagePath, String authorName,
-      String authorGravatar, String datePublished) {
+      String authorGravatar, String datePublished, String articleLink) {
     return InkWell(
         onTap: () {
           Navigator.push(context,

@@ -18,6 +18,7 @@ class _ArticleDetailsState extends State<ArticleDetails> {
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(color: Theme.of(context).primaryColor),
         child: ListView(
+          padding: const EdgeInsets.all(0.0),
           children: <Widget>[_topSection(), _bottomSection()],
         ),
       ),
@@ -61,31 +62,34 @@ class _ArticleDetailsState extends State<ArticleDetails> {
   }
 
   _topSectionHeader() {
-    return Row(
-      children: <Widget>[
-        InkWell(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Icon(
-                  Icons.chevron_left,
-                  size: 25.0,
-                  color: Colors.grey[400],
-                ),
-                Text(
-                  'Back',
-                  style: TextStyle(
-                      fontSize: 16.0,
-                      color: Colors.grey[400],
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 0.9),
-                )
-              ],
-            ))
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(top: 20.0),
+      child: Row(
+        children: <Widget>[
+          InkWell(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Icon(
+                    Icons.chevron_left,
+                    size: 25.0,
+                    color: Colors.grey[400],
+                  ),
+                  Text(
+                    'Back',
+                    style: TextStyle(
+                        fontSize: 16.0,
+                        color: Colors.grey[400],
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 0.9),
+                  )
+                ],
+              ))
+        ],
+      ),
     );
   }
 
