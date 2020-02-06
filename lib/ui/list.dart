@@ -24,7 +24,13 @@ class _ArticleListState extends State<ArticleList> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.max,
-                children: <Widget>[_pageHeader(), Text('Body Text')],
+                children: <Widget>[
+                  _pageHeader(),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  _pageBody(),
+                ],
               ),
             )
           ],
@@ -38,7 +44,9 @@ class _ArticleListState extends State<ArticleList> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         InkWell(
-            onTap: () {},
+            onTap: () {
+              Navigator.pop(context);
+            },
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
@@ -58,6 +66,43 @@ class _ArticleListState extends State<ArticleList> {
               ],
             ))
       ],
+    );
+  }
+
+  _pageBody() {
+    return InkWell(
+      onTap: () {},
+      child: Container(
+        height: MediaQuery.of(context).size.height * 0.2,
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+        child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  width: 110.0,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.0),
+                    image: DecorationImage(
+                      image: NetworkImage(
+                          'https://source.unsplash.com/1280x720/?programming,code'),
+                      fit: BoxFit.cover,
+                      alignment: Alignment.center,
+                      repeat: ImageRepeat.noRepeat,
+                      colorFilter: ColorFilter.mode(
+                          Colors.black.withOpacity(0.35), BlendMode.darken),
+                    ),
+                  ),
+                ),
+              ],
+            )),
+      ),
     );
   }
 }
