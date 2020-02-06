@@ -83,32 +83,33 @@ class _ArticleListState extends State<ArticleList> {
           borderRadius: BorderRadius.circular(10.0),
         ),
         child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Container(
-                  width: 110.0,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10.0),
-                    image: DecorationImage(
-                      image: NetworkImage(
-                          'https://source.unsplash.com/1280x720/?programming,code'),
-                      fit: BoxFit.cover,
-                      alignment: Alignment.center,
-                      repeat: ImageRepeat.noRepeat,
-                      colorFilter: ColorFilter.mode(
-                          Colors.black.withOpacity(0.35), BlendMode.darken),
-                    ),
+          padding: const EdgeInsets.all(10.0),
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Container(
+                width: 110.0,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10.0),
+                  image: DecorationImage(
+                    image: NetworkImage(
+                        'https://source.unsplash.com/1280x720/?programming,code'),
+                    fit: BoxFit.cover,
+                    alignment: Alignment.center,
+                    repeat: ImageRepeat.noRepeat,
+                    colorFilter: ColorFilter.mode(
+                        Colors.black.withOpacity(0.35), BlendMode.darken),
                   ),
                 ),
-                SizedBox(
-                  width: 5.0,
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              ),
+              SizedBox(
+                width: 10.0,
+              ),
+              Flexible(
+                child: Column(
                   mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
@@ -119,15 +120,27 @@ class _ArticleListState extends State<ArticleList> {
                       style: TextStyle(
                         fontSize: 15.0,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black,
+                        color: Colors.black.withOpacity(.75),
                         letterSpacing: 0.9,
                       ),
                     ),
-                    Text('Text Bottom'),
+                    Text(
+                      sampleSummary,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 3,
+                      softWrap: true,
+                      style: TextStyle(
+                        fontSize: 12.5,
+                        fontWeight: FontWeight.normal,
+                        color: Colors.grey,
+                      ),
+                    )
                   ],
-                )
-              ],
-            )),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
